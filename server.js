@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 
 const server=createServer(app)
 const io=new Server(server)
+const port=process.env.PORT || 3000
 
 const __filename= fileURLToPath(import.meta.url)
 const __dirname=path.dirname(__filename)
@@ -22,7 +23,7 @@ io.on("connection",(socket)=>{
 })
 
 server.listen(process.env.PORT,()=>{
-    console.log("Server running on port",process.env.PORT)
+    console.log(`Server running on port ${port}`)
 })
 
 app.set("view engine","ejs");
