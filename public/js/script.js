@@ -14,7 +14,7 @@ if (navigator.geolocation) {
     });
 }
 
-const map=L.map("map").setView([0,0],13);
+const map=L.map("map").setView([0,0],10);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
 
@@ -24,9 +24,9 @@ const marker={ }
 
 socket.on("recieve-location",(data)=>{
     const {id, latitude, longitude}=data
-    map.setView([latitude,longitude],13)
+    map.setView([latitude,longitude])
     if(marker[id]){
-        marker[id].setLatLng([latitude,longitude])
+        marker[id].setLatLng([latitude,longitude], 16)
     }else{
         marker[id]=L.marker([latitude,longitude]).addTo(map)
     }
